@@ -1,19 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject,Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SharedService {
-  
-  endpoint: string = 'http://localhost:2800';
+  endpoint: string = 'https://amadeus-api-angular-node.herokuapp.com';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  constructor(private http: HttpClient) { }
-  
-  get(data:any): Observable<any> {
+  constructor(private http: HttpClient) {}
+
+  get(data: any): Observable<any> {
     let API_URL = `${this.endpoint}/inspirationSearch`;
-    var datas = this.http.post(API_URL, data)
+    var datas = this.http.post(API_URL, data);
     return datas;
   }
 }
